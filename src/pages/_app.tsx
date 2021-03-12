@@ -1,6 +1,6 @@
-import { useContext } from 'react';
-import '../styles/global.css';
 import { ChallengeProvider } from '../contexts/ChallengeContext';
+
+import '../styles/global.css';
 
 function MyApp({ Component, pageProps }) {
   
