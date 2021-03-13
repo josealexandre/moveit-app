@@ -5,6 +5,9 @@ import challenges from '../../challenges.json';
 
 interface ChallengeProviderProps {
     children: ReactNode;
+    level: number;
+    currentExperience: number;
+    completedChallenges: number;
 }
 
 interface Challenge {
@@ -27,10 +30,10 @@ interface ChallengeContextValue {
 
 export const ChallengeContext = createContext({} as ChallengeContextValue);
 
-export const ChallengeProvider = ({ children }: ChallengeProviderProps) => {
-    const [level, setLevel] = useState(1);
-    const [currentExperience, setCurrentExperience] = useState(0);
-    const [completedChallenges, setCompletedChallenges] = useState(0);
+export const ChallengeProvider = ({ children, ...rest }: ChallengeProviderProps) => {
+    const [level, setLevel] = useState(rest.level);
+    const [currentExperience, setCurrentExperience] = useState(rest.currentExperience);
+    const [completedChallenges, setCompletedChallenges] = useState(rest.completedChallenges);
     const [currentChallenge, setCurrentChallenge] = useState(null);
 
     const experienceToNextLevel = Math.pow((level + 1) * 4, 2)
